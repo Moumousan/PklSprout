@@ -26,8 +26,10 @@ let package = Package(
         // .package(url: "...", from: "x.y.z"),
 
         // 🔐 追加：SecureDeliveryCore への依存
-        .package(path: "../SecureDeliveryCore")
-        // or .package(url: "https://github.com/…/SecureDeliveryCore.git", from: "0.1.0")
+        .package(
+                url: "https://github.com/Moumousan/SecureDeliveryCore.git",
+                from: "0.1.0"
+            )
     ],
     targets: [
         // 既存のコア
