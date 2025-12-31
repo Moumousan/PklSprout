@@ -6,22 +6,50 @@ import PackageDescription
 let package = Package(
     name: "PklSprout",
     platforms: [
-            .macOS(.v14), .iOS(.v17)
-        ],
+        .macOS(.v15),
+        .iOS(.v18)
+    ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
+        // 既存
         .library(
             name: "PklSprout",
             targets: ["PklSprout"]
         ),
+        // 🔐 追加：セキュア拡張
+        .library(
+            name: "PklSproutSecure",
+            targets: ["PklSproutSecure"]
+        )
+    ],
+    dependencies: [
+        // すでにあればそのまま
+        // .package(url: "...", from: "x.y.z"),
+
+        // 🔐 追加：SecureDeliveryCore への依存
+        .package(path: "../SecureDeliveryCore")
+        // or .package(url: "https://github.com/…/SecureDeliveryCore.git", from: "0.1.0")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
+        // 既存のコア
         .target(
             name: "PklSprout",
-            path: "Sources"
+            dependencies: []
         ),
 
+        // 🔐 セキュア拡張
+        .target(
+            name: "PklSproutSecure",
+            dependencies: [
+                "PklSprout",
+                "SecureDeliveryCore"
+            ],
+            path: "Sources/PklSproutSecure"
+        ),
+/*
+        .testTarget(
+            name: "PklSproutTests",
+            dependencies: ["PklSprout", "PklSproutSecure"]
+        )
+*/
     ]
 )
