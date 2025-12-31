@@ -21,16 +21,7 @@ let package = Package(
             targets: ["PklSproutSecure"]
         )
     ],
-    dependencies: [
-        // すでにあればそのまま
-        // .package(url: "...", from: "x.y.z"),
-
-        // 🔐 追加：SecureDeliveryCore への依存
-        .package(
-                url: "https://github.com/Moumousan/SecureDeliveryCore.git",
-                from: "0.1.0"
-            )
-    ],
+    dependencies: [],
     targets: [
         // 既存のコア
         .target(
@@ -43,15 +34,15 @@ let package = Package(
             name: "PklSproutSecure",
             dependencies: [
                 "PklSprout",
-                "SecureDeliveryCore"
+                .product(name: "SecureDeliveryCore", package: "SecureDeliveryCore")
             ],
             path: "Sources/PklSproutSecure"
-        ),
-/*
+        )
+        /*
         .testTarget(
             name: "PklSproutTests",
             dependencies: ["PklSprout", "PklSproutSecure"]
         )
-*/
+        */
     ]
 )

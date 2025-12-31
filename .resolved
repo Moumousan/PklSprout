@@ -1,0 +1,15 @@
+{
+  "originHash" : "1c7b53c0bac5c66eb693c9e6c5239ab942fda504fda51e1697d3cd843edbd780",
+  "pins" : [
+    {
+      "identity" : "securedeliverycore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Moumousan/SecureDeliveryCore.git",
+      "state" : {
+        "revision" : "1120846e7fc124a011fb4d66971c48e70a9b700c",
+        "version" : "0.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
